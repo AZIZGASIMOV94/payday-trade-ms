@@ -1,0 +1,9 @@
+rootProject.name = 'payday'
+
+include 'list-stock-ms'
+include 'stock-mock-source-ms'
+include 'common'
+include 'deposit-cash-ms'
+include 'notifications-ms'
+include 'user-order-ms'
+
