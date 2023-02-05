@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class KafkaProducerConfig {
 
-    @Value(value = "${kafka.bootstrapAddress}")
+    @Value(value = "${kafka.bootstrap-address}")
     private String bootstrapAddress;
 
     @Value(value = "${kafka.topic-name}")
@@ -53,5 +53,4 @@ public class KafkaProducerConfig {
     public NewTopic userOrderEvents() {
         return new NewTopic(topicName, 1, (short) 1);
     }
-
 }

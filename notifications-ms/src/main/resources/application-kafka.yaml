@@ -1,2 +1,6 @@
 kafka:
-  address: "localhost:9092"
+  bootstrap-servers: "localhost:9092"
+  topic-name: "process-user-order-events"
+  consumer:
+    group-id: "notification-ms"
+    auto-offset-reset: "earliest"

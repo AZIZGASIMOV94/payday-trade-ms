@@ -26,15 +26,15 @@ public class UserOrderMsApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-        Thread.sleep(1000);
-        kafkaTemplate.send(topicName, "APPL", "aziz.gasimov@gmail.com");
-        Thread.sleep(500);
-        kafkaTemplate.send(topicName, "GGL",  "aziz.emilov@gmail.com");
-        Thread.sleep(200);
-        kafkaTemplate.send(topicName, "TSLA", "aziz.rasullu@gmail.com");
-        Thread.sleep(150);
-        kafkaTemplate.send(topicName, "AMZN", "emingasimov88@mail.ru");
-
+        while (true) {
+            Thread.sleep(1000);
+            kafkaTemplate.send(topicName, "APPL", "gasimovaziz@gmail.com");
+/*            Thread.sleep(500);
+            kafkaTemplate.send(topicName, "GGL",  "gasimovaziz@gmail.com");
+            Thread.sleep(200);
+            kafkaTemplate.send(topicName, "TSLA", "gasimovaziz@gmail.com");
+            Thread.sleep(150);
+            kafkaTemplate.send(topicName, "AMZN", "gasimovaziz@gmail.com");*/
+        }
     }
 }

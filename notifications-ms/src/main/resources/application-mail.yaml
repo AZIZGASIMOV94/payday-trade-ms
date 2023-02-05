@@ -1,0 +1,12 @@
+spring:
+  mail:
+    host: "smtp.gmail.com"
+    port: 587
+    username: &mail "aziz.gasimov94@gmail.com"
+    # gmail username here
+    password: "siasgnjfoqksqsyl"
+    # gmail app password here
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+    protocol: "smtp"
