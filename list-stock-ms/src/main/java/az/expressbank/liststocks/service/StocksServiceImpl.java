@@ -2,6 +2,7 @@ package az.expressbank.liststocks.service;
 
 import az.expressbank.liststocks.repository.StocksRepository;
 import az.expressbank.liststocks.dto.StocksResponseDto;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;

@@ -1,15 +1,11 @@
 package az.expressbank.notification.config.mail;
 
-import az.expressbank.notification.config.service.SendMailServiceInter;
+import az.expressbank.notification.service.SendMailServiceInter;
 import lombok.SneakyThrows;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.consumer.OffsetAndMetadata;
-import org.apache.kafka.common.TopicPartition;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MailProcessor implements Runnable {

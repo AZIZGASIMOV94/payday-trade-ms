@@ -1,4 +1,4 @@
-package az.expressbank.notification.config.service;
+package az.expressbank.notification.service;
 
 
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
-package az.expressbank.notification.config.consumer;
+package az.expressbank.notification.consumer;
 
-import az.expressbank.notification.config.service.SendMailServiceInter;
+import az.expressbank.notification.service.SendMailServiceInter;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -37,7 +37,6 @@ public class UserOrderMailConsumer {
         while (true) {
             ConsumerRecords<String, String> records = kafkaConsumer.poll(Duration.ofMillis(100));
             for (ConsumerRecord<String, String> record : records) {
-
                 sendMailServiceInter.send(record.value(), " you bought stock of: "+ record.key(), "Congrats you order has been carried out you " +
                         "purchased the stock of " + record.key());
 
