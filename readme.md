@@ -6,6 +6,7 @@
 ### 3. Language: Java vesion: 11
 ### 4. Build Tool: Gradle
 ### 4. Framework: Spring Boot
+### 5. Testing: JUNIT, MOCKITO
 
 </br>
 </br>

@@ -55,12 +55,10 @@ public class StocksControllerTest {
 
         mockMvc.perform(get("/stocks")
                 .contentType(MediaType.APPLICATION_JSON))
-                //.andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[0].id", equalTo(records.get(0).getId().intValue())))
                 .andExpect(jsonPath("$[0].stackName", is(records.get(0).getStackName())))
                 .andExpect(jsonPath("$[0].stockPrice", is(records.get(0).getStockPrice().doubleValue())));
     }
-
 
     @Test
     public void shouldReturnDataOfTheSecondStock() throws Exception {
@@ -70,11 +68,11 @@ public class StocksControllerTest {
 
         mockMvc.perform(get("/stocks")
                 .contentType(MediaType.APPLICATION_JSON))
-                //.andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[1].id", equalTo(records.get(1).getId().intValue())))
                 .andExpect(jsonPath("$[1].stackName", is(records.get(1).getStackName())))
                 .andExpect(jsonPath("$[1].stockPrice", is(records.get(1).getStockPrice().doubleValue())));
     }
+
     @Test
     public void shouldReturnDataOfTheThirdStock() throws Exception {
         List<StocksResponseDto> records = new ArrayList<>(List.of(record_1, record_2, record_3));
@@ -83,7 +81,6 @@ public class StocksControllerTest {
 
         mockMvc.perform(get("/stocks")
                 .contentType(MediaType.APPLICATION_JSON))
-                //.andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[2].id", equalTo(records.get(2).getId().intValue())))
                 .andExpect(jsonPath("$[2].stackName", is(records.get(2).getStackName())))
                 .andExpect(jsonPath("$[2].stockPrice", is(records.get(2).getStockPrice().doubleValue())));
