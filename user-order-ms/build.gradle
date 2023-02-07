@@ -1,7 +1,10 @@
+import com.bmuschko.gradle.docker.tasks.image.*
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.8'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'com.bmuschko.docker-remote-api' version '6.6.1'
 }
 
 group = 'az.epressbank'
@@ -31,4 +34,28 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+task dockerFile(type: Dockerfile, dependsOn: assemble) {
+    destFile.set(project.file('Dockerfile'))
+    from "alpine:$alpineVersion"
+    runCommand 'apk add --no-cache openjdk11'
+    copyFile "build/libs/${project.name}-${project.version}.jar", '/app/'
+    workingDir '/app/'
+    entryPoint 'java'
+    defaultCommand '-jar', "/app/${project.name}-${project.version}.jar"
+}
+
+task dockerBuild(type: DockerBuildImage, dependsOn: dockerFile) {
+    inputDir.set(file("$projectDir/."))
+    images.add("$dockerRepoUrl/exprsbnk-${project.name}:$version")
+}
+
+
+task dockerPush(type: DockerPushImage, dependsOn: dockerBuild) {
+    images.add("$dockerRepoUrl/exprsbnk-${project.name}:$version")
+
+    registryCredentials.setUsername("$dockerHubUsername")
+    registryCredentials.setPassword("$dockerHubPassword")
+    registryCredentials.setEmail("$dockerHubEmail")
 }
