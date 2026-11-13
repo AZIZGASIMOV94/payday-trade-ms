@@ -5,7 +5,7 @@ plugins {
 	id 'java'
 }
 
-group = 'az.expressbank'
+group = 'io.github.azizgasimov94.payday'
 version = '0.0.1'
 sourceCompatibility = '11'
 
