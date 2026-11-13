@@ -32,3 +32,12 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+// common is a shared library, not a runnable app: build a plain jar instead of a Spring Boot fat jar
+tasks.named('bootJar') {
+    enabled = false
+}
+
+tasks.named('jar') {
+    enabled = true
+}
