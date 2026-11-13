@@ -4,7 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
-group = 'az.epressbank'
+group = 'io.github.azizgasimov94.payday'
 version = '0.0.1'
 sourceCompatibility = '11'
 

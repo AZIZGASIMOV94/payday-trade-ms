@@ -7,7 +7,7 @@ plugins {
     id 'com.bmuschko.docker-remote-api' version '6.6.1'
 }
 
-group = 'az.epressbank'
+group = 'io.github.azizgasimov94.payday'
 version = '0.0.1'
 sourceCompatibility = '11'
 
@@ -49,14 +49,14 @@ task dockerFile(type: Dockerfile, dependsOn: assemble) {
 
 task dockerBuild(type: DockerBuildImage, dependsOn: dockerFile) {
     inputDir.set(file("$projectDir/."))
-    images.add("$dockerRepoUrl/exprsbnk-${project.name}:$version")
+    images.add("$dockerRepoUrl/payday-${project.name}:$version")
 }
 
 
 task dockerPush(type: DockerPushImage, dependsOn: dockerBuild) {
-    images.add("$dockerRepoUrl/exprsbnk-${project.name}:$version")
+    images.add("$dockerRepoUrl/payday-${project.name}:$version")
 
-    registryCredentials.setUsername("$dockerHubUsername")
-    registryCredentials.setPassword("$dockerHubPassword")
-    registryCredentials.setEmail("$dockerHubEmail")
+    registryCredentials.setUsername(findProperty("dockerHubUsername") ?: System.getenv("DOCKERHUB_USERNAME") ?: "")
+    registryCredentials.setPassword(findProperty("dockerHubPassword") ?: System.getenv("DOCKERHUB_TOKEN") ?: "")
+    registryCredentials.setEmail(findProperty("dockerHubEmail") ?: System.getenv("DOCKERHUB_EMAIL") ?: "")
 }
